@@ -1,16 +1,15 @@
 class Solution:
     def reverseString(self, s: List[str]) -> None:
-        left = 0
-        right = len(s) - 1
-        memory = ""
+        l = 0
+        r = len(s) - 1
+        m = ""
         
-        while left < right:
-            memory = s[left]
-            s[left] = s[right] 
-            s[right] = memory
+        while l < r:
+            m = s[l]
+            s[l] = s[r] 
+            s[r] = m
             
-            left += 1
-            right -= 1
-        
+            l += 1
+            r -= 1
 
         
