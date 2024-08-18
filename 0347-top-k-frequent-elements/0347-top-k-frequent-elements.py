@@ -1,23 +1,21 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        num_freq = {}               # Create HashMap (key: value)
-        output = []
+        nf = {}
+        o = []
 
         if k == len(nums):
             return nums
         
-        for num in nums:            # HashMap for number of frequent elements
-            if num in num_freq.keys():
-                num_freq[num] = num_freq.get(num) + 1
+        for n in nums:
+            if n in nf.keys():
+                nf[n] += 1
             else:
-                num_freq[num] = 1
+                nf[n] = 1
+            
+        sd = dict(sorted(nf.items(), key=lambda x: x[1], reverse=True))
 
-        for i in range(k):          # For amount of max numbers, add to output
-            max_val = max(num_freq.values())
-            for keys, value in num_freq.items():        # Get key from value
-                if value == max_val:
-                    key = keys
-            output.append(key)      # Add key to return
-            num_freq.pop(key)       # Delete the key
+        for i in range(k):
+            ky, v = list(sd.items())[i]
+            o.append(ky)
         
-        return output
+        return o
