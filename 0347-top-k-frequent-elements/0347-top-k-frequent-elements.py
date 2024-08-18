@@ -1,21 +1,15 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        nf = {}
-        o = []
-
-        if k == len(nums):
-            return nums
-        
+        heap = []
+        counter = {}
         for n in nums:
-            if n in nf.keys():
-                nf[n] += 1
-            else:
-                nf[n] = 1
-            
-        sd = dict(sorted(nf.items(), key=lambda x: x[1], reverse=True))
-
-        for i in range(k):
-            ky, v = list(sd.items())[i]
-            o.append(ky)
+            counter[n] = 1 + counter.get(n, 0)
         
-        return o
+        for key, val in counter.items():
+            heapq.heappush(heap, (-val, key))
+        
+        res = []
+        while len(res) < k:
+            res.append(heapq.heappop(heap)[1])
+        
+        return res
