@@ -1,5 +1,5 @@
 class Solution:
     def distributeCandies(self, candyType: List[int]) -> int:
-        b = len(candyType) // 2
-        a = len(set(candyType))
+        a = len(candyType) // 2
+        b = len(set(candyType))
         return min(a, b)
