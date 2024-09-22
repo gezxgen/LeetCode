@@ -1,6 +1,6 @@
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
-        L = 0
+        L, R = 0, len(s)
         
         if not s:
             return True
@@ -8,6 +8,6 @@ class Solution:
         for i in range(len(t)):
             if t[i] == s[L]:
                 L += 1
-                if L == len(s):
+                if L == R:
                     return True
         return False
