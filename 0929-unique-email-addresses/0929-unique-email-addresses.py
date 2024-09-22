@@ -4,7 +4,8 @@ class Solution:
     
         for e in s:
             l, d = e.split('@')
-            l = l.split('+')[0].replace('.', '')
+            l = l.split('+')[0]
+            l = l.replace('.', '')
             m = l + '@' + d
             u.add(m)
 
