@@ -1,14 +1,9 @@
 class Solution:
     def replaceElements(self, arr: List[int]) -> List[int]:
-        
-        biggest: int = -1
-        current: int = 0
-        
+        x: int = -1
+        c: int = 0
         for i in range(len(arr)-1, -1, -1):
-            current = arr[i]
-            arr[i] = biggest
-            biggest = max(biggest, current)
-            
-        
+            c = arr[i]
+            arr[i] = x
+            x = max(x, c)
         return arr
-    
