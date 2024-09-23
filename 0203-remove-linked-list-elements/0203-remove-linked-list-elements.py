@@ -5,16 +5,16 @@
 #         self.next = next
 class Solution:
     def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
-        d = ListNode(0)
-        d.next = head
-        p = d
-        c = head
+        dummy = ListNode(0)
+        dummy.next = head
+        prev = dummy
+        curr = head
         
-        while c:
-            if c.val == val:
-                p.next = c.next
+        while curr:
+            if curr.val == val:
+                prev.next = curr.next
             else:
-                p = c
-            c = c.next
+                prev = curr
+            curr = curr.next
             
-        return d.next
+        return dummy.next
