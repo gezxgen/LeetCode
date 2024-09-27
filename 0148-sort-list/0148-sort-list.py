@@ -5,21 +5,25 @@
 #         self.next = next
 class Solution:
     def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        dummy = head
-        nums: list[int] = []
-        
-        # get nums
-        while head:
-            nums.append(head.val)
-            head = head.next
-        
-        # sort nums
-        nums.sort()
-        head = dummy
-        
-        # set nums
-        while nums:
-            head.val = nums.pop(0)
-            head = head.next
-        
-        return dummy
+        # Step 0
+        if not head:
+            return head
+
+        node = head
+        sorted_list = []
+
+        # Step 1: 
+        while node:
+            sorted_list.append(node.val)
+            node = node.next
+
+        # Step 2:
+        sorted_list.sort()
+
+        # Step 3: 
+        node = head
+        for val in sorted_list:
+            node.val = val
+            node = node.next
+
+        return head
