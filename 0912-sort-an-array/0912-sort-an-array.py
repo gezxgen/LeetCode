@@ -12,14 +12,10 @@ class Solution:
                     nums[i] = right[k]
                     k += 1
                 i += 1
-            while j <= len(left)-1:
-                nums[i] = left[j]
-                j += 1
-                i += 1
-            while k <= len(right)-1:
-                nums[i] = right[k]
-                k += 1
-                i += 1
+            if j <= len(left)-1:
+                nums[i:R+1] = left[j:len(left)]
+            else:
+                nums[i:R+1] = right[k:len(right)]
             return nums
         
         def mergeSort(nums, l, r):
