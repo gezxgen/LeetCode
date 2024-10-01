@@ -1,9 +1,10 @@
 class Solution:
     def maxArea(self, nums: List[int]) -> int:
-        tot, L, R = 0, 0, len(nums)-1
+        tot, cur, L, R = 0, 0, 0, len(nums)-1
         
         while L < R:
-            tot = max(tot, (R-L)*min(nums[L], nums[R]))
+            cur = min(nums[L], nums[R]) * (R-L)
+            tot = max(tot, cur)
             if nums[L] < nums[R]:
                 L += 1
             else:
