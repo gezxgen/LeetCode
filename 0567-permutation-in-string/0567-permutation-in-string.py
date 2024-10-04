@@ -1,10 +1,14 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
-        window, s1 = len(s1), Counter(s1)
-        
-        for i in range(len(s2)-window+1):
-            s = Counter(s2[i:i+window])
-            if s == s1:
+        cntr, w = Counter(s1), len(s1)   
+
+        for i in range(len(s2)):
+            if s2[i] in cntr: 
+                cntr[s2[i]] -= 1
+            if i >= w and s2[i-w] in cntr: 
+                cntr[s2[i-w]] += 1
+
+            if all([cntr[i] == 0 for i in cntr]): # see optimized code below
                 return True
-            
+
         return False
