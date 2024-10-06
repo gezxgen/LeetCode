@@ -1,20 +1,11 @@
 class Solution:
     def minimumDifference(self, nums: List[int], k: int) -> int:
-        current_diff = 2147483647
-        all_time_diff = 2147483647
-        l = 0
-        r = k - 1
-        n = len(nums)
-        
         nums.sort()
+        cur, mn = 0, 100000
+        L, R, n = 0, k - 1, len(nums)
         
-        while r < n:
-            current_diff = nums[r] - nums[l]
-            if current_diff < all_time_diff:
-                all_time_diff = current_diff
-            l += 1
-            r += 1
-        
-        return all_time_diff
-        
+        while R < n:
+            mn = min(mn, nums[R] - nums[L])
+            L, R = L + 1, R + 1
+        return mn
         
