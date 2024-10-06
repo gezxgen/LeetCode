@@ -1,5 +1,8 @@
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        if not matrix:
+            return False
+        
         m, n = len(matrix), len(matrix[0])
         L, R = 0, m * n - 1
         
