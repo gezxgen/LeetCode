@@ -1,19 +1,13 @@
 class Solution:
     def minCost(self, colors: str, neededTime: List[int]) -> int:
-        totalTime = 0
-        i = 0
-        j = 0
-
-        while i < len(neededTime) and j < len(neededTime):
-            currTotal = 0
-            currMax = 0
-
-            while j < len(neededTime) and colors[i] == colors[j]:
-                currTotal += neededTime[j]
-                currMax = max(currMax, neededTime[j])
+        tot, i, j, n = 0, 0, 0, len(neededTime)
+        while i < n and j < n:
+            cur = 0
+            mx = 0
+            while j < n and colors[i] == colors[j]:
+                cur += neededTime[j]
+                mx = max(mx, neededTime[j])
                 j += 1
-
-            totalTime += currTotal - currMax
+            tot += cur - mx
             i = j
-
-        return totalTime
+        return tot
