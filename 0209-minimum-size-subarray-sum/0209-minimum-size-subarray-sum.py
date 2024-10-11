@@ -1,5 +1,8 @@
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
+        if sum(nums) < target:
+            return 0
+        
         L, R, n = 0, 0, len(nums)
         sm, size = 0, n + 1
         
