@@ -1,23 +1,24 @@
 class Solution:
     def shipWithinDays(self, weights: List[int], days: int) -> int:
-        L, R = max(weights), sum(weights)
-        mn, n = R, len(weights)
-        
-        @lru_cache(None)
-        def possible(M: int):
-            P = 0
-            for _ in range(days):
-                sm = 0
-                while P < n and sm + weights[P] <= M:
-                    sm += weights[P]
-                    P += 1
-            return P == n
-        
-        while L <= R:
-            M = (L + R) // 2
-            if possible(M):
-                R = M - 1
-                mn = min(mn, M)
+        l = max(weights)
+        r = sum(weights)
+
+        def shipDays(shipCapacity: int) -> int:
+            days = 1
+            capacity = 0
+            for weight in weights:
+                if capacity + weight > shipCapacity:
+                    days += 1
+                    capacity = weight
+                else:
+                    capacity += weight
+            return days
+
+        while l < r:
+            m = (l + r) // 2
+            if shipDays(m) <= days:
+                r = m
             else:
-                L = M + 1
-        return mn
+                l = m + 1
+
+        return l
