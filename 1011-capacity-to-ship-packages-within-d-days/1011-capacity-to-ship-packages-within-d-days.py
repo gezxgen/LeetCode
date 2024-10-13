@@ -3,6 +3,7 @@ class Solution:
         L, R = max(weights), sum(weights)
         mn, n = R, len(weights)
         
+        @lru_cache(None)
         def possible(M: int):
             P = 0
             for _ in range(days):
