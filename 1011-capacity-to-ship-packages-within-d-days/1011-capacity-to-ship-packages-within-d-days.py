@@ -11,11 +11,11 @@ class Solution:
                 while P < n and sm + weights[P] <= M:
                     sm += weights[P]
                     P += 1
-            return P
+            return P == n
         
         while L <= R:
             M = (L + R) // 2
-            if possible(M) == n:
+            if possible(M):
                 R = M - 1
                 mn = min(mn, M)
             else:
