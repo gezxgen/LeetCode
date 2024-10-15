@@ -1,14 +1,9 @@
 class Solution:
     def arraySign(self, nums: List[int]) -> int:
-        def signFunc(x):
-            if x < 0:
-                return -1
-            elif x > 0:
-                return 1
-            return 0
-        
-        pw = 1
+        count = 0
         for num in nums:
-            pw *= num
-        
-        return signFunc(pw)
+            if num == 0:
+                return 0
+            if num < 0:
+                count +=1
+        return 1 if count % 2 == 0 else -1
