@@ -1,13 +1,13 @@
 class Solution:
     def makeEqual(self, words: List[str]) -> bool:
-        mp, n = {}, len(words)
-        
+        counts = [0] * 26
         for word in words:
-            for char in word:
-                mp[char] = mp.get(char, 0) + 1
+            for c in word:
+                counts[ord(c) - 97] += 1
         
-        for char in mp:
-            if mp[char] % n != 0:
+        n = len(words)
+        for val in counts:
+            if val % n != 0:
                 return False
-        
+
         return True
