@@ -1,13 +1,10 @@
 class Solution:
-    def makeEqual(self, words: List[str]) -> bool:
-        counts = [0] * 26
-        for word in words:
-            for c in word:
-                counts[ord(c) - 97] += 1
-        
-        n = len(words)
-        for val in counts:
+    def makeEqual(self, ws: List[str]) -> bool:
+        cnt, n = [0] * 26, len(ws)
+        for w in ws:
+            for c in w:
+                cnt[ord(c) - 97] += 1
+        for val in cnt:
             if val % n != 0:
                 return False
-
         return True
