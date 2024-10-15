@@ -1,9 +1,9 @@
 class Solution:
-    def arraySign(self, nums: List[int]) -> int:
-        count = 0
-        for num in nums:
-            if num == 0:
+    def arraySign(self, ns: List[int]) -> int:
+        cnt = 0
+        for n in ns:
+            if n == 0:
                 return 0
-            if num < 0:
-                count +=1
-        return 1 if count % 2 == 0 else -1
+            if n < 0:
+                cnt +=1
+        return 1 if cnt % 2 == 0 else -1
