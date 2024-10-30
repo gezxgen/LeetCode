@@ -7,21 +7,22 @@
 class Solution:
     def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
         def search(root):
-            if not root:
-                return
+            curr, stack = root, []
             
-            nonlocal res
-            search(root.right)
-            if not root.left and not root.right:
-                res.append(root.val)
-            else:
-                search(root.left)
+            while curr or stack:
+                if curr:
+                    stack.append(curr)
+                    curr = curr.left
+                else:
+                    curr = stack.pop()
+                    if not curr.left and not curr.right:
+                        res.append(curr.val)
+                    curr = curr.right
             
         res = []
         search(root1)
         res, res2 = [], res
         search(root2)
-        print(res, res2)
         return res == res2
         
         
