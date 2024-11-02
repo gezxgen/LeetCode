@@ -9,17 +9,13 @@ class Solution:
         def balanced(root: Optional[TreeNode]) -> list[bool, int]:
             if not root:
                 return [True, 0]
-        
             if not root.left and not root.right:
                 return [True, 1]
             
-            
             left = balanced(root.left)
             right = balanced(root.right)
-            
             answer = left[0] and right[0] and abs(left[1] - right[1]) <= 1
             return [answer, max(left[1], right[1]) + 1]
-        
-        
+    
         return balanced(root)[0]
         
