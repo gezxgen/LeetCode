@@ -1,11 +1,9 @@
 class Solution:
-    def largestCombination(self, nums: List[int]) -> int:
-        # create a hashmap and count how often each bit is represented, return max
-        ls = [0] * 24
-        
-        for num in nums:
-            for i in range(24):
-                if num & (1 << i):
-                    ls[i] += 1
-        
-        return max(ls)
+    def largestCombination(self, candidates: List[int]) -> int:
+        # go through all binary places, and count num 1's
+        i, ans = 0, 0
+        maxval = max(candidates)
+        while (1 << i) <= maxval:
+            ans = max(ans, sum([1 for x in candidates if (1 << i) & x]))
+            i += 1
+        return ans
