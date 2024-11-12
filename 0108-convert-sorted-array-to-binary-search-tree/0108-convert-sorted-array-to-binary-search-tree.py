@@ -6,21 +6,11 @@
 #         self.right = right
 class Solution:
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
-        def make(start: int, end: int) -> Optional[TreeNode]:
+        def make(s , e):
+            if s > e: return None
             nonlocal nums
-            
-            # escape sequence
-            if start > end:
-                return None
-            
-            # initialize root
-            M = (start + end) // 2
-            curr = TreeNode(nums[M])
-            
-            # calculate children & return
-            curr.left = make(start, M - 1)
-            curr.right = make(M + 1, end)
-            return curr
+            M = (s + e) // 2
+            return TreeNode(nums[M], make(s, M - 1), make(M + 1, e))
         
         nums.sort()
         return make(0, len(nums) - 1)
