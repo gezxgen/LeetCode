@@ -10,10 +10,12 @@ class Solution:
             return ""
         
         s = str(root.val)
+        
         if root.left:
             s += "(" + self.tree2str(root.left) + ")"
             if root.right:
                 s += "(" + self.tree2str(root.right) + ")"
         elif root.right:
             s += "()(" + self.tree2str(root.right) + ")"
+        
         return s
