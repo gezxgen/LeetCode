@@ -6,18 +6,18 @@
 #         self.right = right
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
-        def search(current, maximum):
-            if not current:
+        def search(curr, mx):
+            if not curr:
                 return
             
-            nonlocal counter
-            if current.val >= maximum:
-                counter += 1
+            nonlocal cnt
+            if curr.val >= mx:
+                cnt += 1
             
-            new_max = max(current.val, maximum)
-            search(current.left, new_max)
-            search(current.right, new_max)
+            new_mx = max(curr.val, mx)
+            search(curr.left, new_mx)
+            search(curr.right, new_mx)
         
-        counter = 0
+        cnt = 0
         search(root, float("-inf"))
-        return counter
+        return cnt
