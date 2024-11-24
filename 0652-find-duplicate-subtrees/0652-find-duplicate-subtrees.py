@@ -10,12 +10,12 @@ class Solution:
             if not node:
                 return "#"
             
-            subtree = f"{node.val},{serialize(node.left)},{serialize(node.right)}"
-            count[subtree] += 1
-            if count[subtree] == 2:
-                duplicates.append(node)
-            return subtree
+            sub = f"{node.val},{serialize(node.left)},{serialize(node.right)}"
+            cnt[sub] += 1
+            if cnt[sub] == 2:
+                dup.append(node)
+            return sub
 
-        count, duplicates = defaultdict(int), []
+        cnt, dup = defaultdict(int), []
         serialize(root)
-        return duplicates
+        return dup
