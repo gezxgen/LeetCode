@@ -8,4 +8,4 @@ class Solution:
         mp[t[-1]] = mp.get(t[-1], 0) + 1
         
         # find the difference
-        return next(key for key, value in mp.items() if value == 1)
+        return next(k for k, v in mp.items() if v)
