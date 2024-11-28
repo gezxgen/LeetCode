@@ -1,15 +1,11 @@
 class Solution:
     def findTheDifference(self, s: str, t: str) -> str:
-        # hash s and t
-        smp = {}
-        for c in s:
-            smp[c] = smp.get(c, 0) + 1
-        
-        tmp = {}
-        for c in t:
-            tmp[c] = tmp.get(c, 0) + 1
+        # hash
+        mp = {}
+        for i in range(len(s)):
+            mp[t[i]] =  mp.get(t[i], 0) + 1
+            mp[s[i]] =  mp.get(s[i], 0) - 1
+        mp[t[-1]] = mp.get(t[-1], 0) + 1
         
         # find the difference
-        for c in tmp.keys():
-            if tmp[c] != smp.get(c, 0):
-                return c
+        return next(key for key, value in mp.items() if value == 1)
