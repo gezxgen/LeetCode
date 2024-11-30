@@ -1,17 +1,4 @@
 class Solution:
-    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
-        # Merge
-        for num in nums2:
-            nums1.append(num)
-        nums1.sort()
-
-        # Delete unnecessary elements
-        while len(nums1) > 2:
-            nums1.pop(0)
-            nums1.pop()
-
-        # Return median
-        if len(nums1) == 1:
-            return nums1[0] + 0.0
-        else:
-            return (nums1[0] + nums1[1]) / 2.0
+    def findMedianSortedArrays(self, nums: List[int], nums2: List[int]) -> float:
+        nums, n = sorted(nums + nums2), len(nums) + len(nums2)
+        return nums[n // 2] if n % 2 == 1 else (nums[n // 2 - 1] + nums[ceil(n / 2)]) / 2
