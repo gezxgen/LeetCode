@@ -19,13 +19,13 @@ class WordDictionary:
 
     def search(self, word: str, root=None) -> bool:
         curr = root if root else self.root
-        for i, char in enumerate(word):
-            if char == ".":
+        for i in range(len(word)):
+            if word[i] == ".":
                 return any(self.search(word[i + 1:], curr.children[child]) for child in curr.children)
             
-            if char not in curr.children:
+            if word[i] not in curr.children:
                 return False
-            curr = curr.children[char]
+            curr = curr.children[word[i]]
         return curr.word
 
 
