@@ -1,6 +1,3 @@
 class Solution:
-    def isPrefixOfWord(self, sentence: str, searchWord: str) -> int:
-        for i, word in enumerate(sentence.split(" ")):
-            if word.startswith(searchWord):
-                return i + 1
-        return -1
+    def isPrefixOfWord(self, s: str, t: str) -> int:
+        return -1 if (m:=(s:=' '+s).find(' '+t))==-1 else 1+s[:m].count(' ')
