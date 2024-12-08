@@ -1,8 +1,8 @@
 class Solution:
-    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+    def combinationSum(self, candidates, target):
         res, cur = [], []
         
-        def backtracking(nums: List[int], l: int, n: int, i: int, totComb: List[int], curComb: List[int], sm: int) -> None:
+        def backtracking(nums, l, n, i, totComb, curComb, sm):
             # append if target is found
             if sm == n:
                 totComb.append(curComb.copy())
