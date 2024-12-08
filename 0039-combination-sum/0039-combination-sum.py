@@ -1,11 +1,11 @@
 class Solution:
-    def combinationSum(self, candidates, target):
+    def combinationSum(self, can, t):
         res, cur = [], []
         
-        def backtracking(nums, l, n, i, totComb, curComb, sm):
+        def b(nums, l, n, i, tot, cur, sm):
             # append if target is found
             if sm == n:
-                totComb.append(curComb.copy())
+                tot.append(cur.copy())
                 return
             
             # return if sum is too big
@@ -13,12 +13,12 @@ class Solution:
                 return
             
             # if it is smaller, include and not include the value
-            curComb.append(nums[i])
-            backtracking(nums, l, n, i, totComb, curComb, sm + nums[i])
-            curComb.pop()
+            cur.append(nums[i])
+            b(nums, l, n, i, tot, cur, sm + nums[i])
+            cur.pop()
             
-            backtracking(nums, l, n, i + 1, totComb, curComb, sm)
+            b(nums, l, n, i + 1, tot, cur, sm)
             
 
-        backtracking(candidates, len(candidates), target, 0, res, cur, 0)
+        b(can, len(can), t, 0, res, cur, 0)
         return res
