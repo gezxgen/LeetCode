@@ -15,9 +15,7 @@ class Solution:
         
         # set the numbers as strings in a result array at index
         values = list(HashMap.values())
-        res[values[0]] = "Gold Medal"
-        res[values[1]] = "Silver Medal"
-        res[values[2]] = "Bronze Medal"
+        res[values[0]], res[values[1]], res[values[2]] = "Gold Medal", "Silver Medal", "Bronze Medal"
         
         for i in range(3, n):
             res[values[i]] = str(i + 1)
